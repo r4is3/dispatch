@@ -45,10 +45,10 @@ def resolve_user(client: Any, user_id: str):
     return {"id": user_id}
 
 
-def chunks(list_var, n):
+def chunks(ids, n):
     """Yield successive n-sized chunks from l."""
-    for i in range(0, len(list_var), n):
-        yield list_var[i : i + n]
+    for i in range(0, len(ids), n):
+        yield ids[i : i + n]
 
 
 def paginated(data_key):
@@ -373,3 +373,9 @@ def is_user(slack_user: str):
 def open_dialog_with_user(client: Any, trigger_id: str, dialog: dict):
     """Opens a dialog with a user."""
     return make_call(client, "dialog.open", trigger_id=trigger_id, dialog=dialog)
+
+
+def open_modal_with_user(client: Any, trigger_id: str, modal: dict):
+    """Opens a modal with a user."""
+    # the argument should be view in the make call, since slack api expects view
+    return make_call(client, "views.open", trigger_id=trigger_id, view=modal)
