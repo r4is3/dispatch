@@ -265,7 +265,7 @@ def list_participants(incident_id: int, command: dict = None, db_session=None):
     """Returns the list of incident participants to the user as an ephemeral message."""
     blocks = []
     blocks.append(
-        {"type": "section", "text": {"type": "mrkdwn", "text": f"*Incident Participants*"}}
+        {"type": "section", "text": {"type": "mrkdwn", "text": "*Incident Participants*"}}
     )
 
     participants = participant_service.get_all_by_incident_id(
@@ -435,7 +435,7 @@ def create_engage_oncall_dialog(incident_id: int, command: dict = None, db_sessi
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"No oncall services have been defined. You can define them in the Dispatch UI at /services",
+                    "text": "No oncall services have been defined. You can define them in the Dispatch UI at /services",
                 },
             }
         ]
